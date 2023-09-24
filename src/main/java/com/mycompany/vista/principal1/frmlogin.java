@@ -4,6 +4,7 @@
  */
 package com.mycompany.vista.principal1;
 import com.mycompany.vista.Conexion;
+import static com.mycompany.vista.principal1.frmregistro.fr;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class frmlogin extends javax.swing.JFrame {
 public static frmregistro fr;
+public static frmgame fg;
     Conexion con=new Conexion(); 
 Connection cn=con.conectar();
 
@@ -160,7 +162,25 @@ Connection cn=con.conectar();
         //vamos a validar los campos
         if(!usuario.equals("")||!pass.equals("")){
             //un comnetario de llenar los datos
-            
+            try{
+                PreparedStatement ps=cn.prepareCall("SELECT usuario FROM usuarios WHERE usuario='"+usuario+"'AND contraseña= '"+pass+"'");
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()){
+                String Usuario=rs.getString("usuario");
+                 fg=new frmgame ();
+                 fg.setVisible(true);
+                 this.dispose();
+                
+                
+              
+            }else{
+                   JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
+                  }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"No se puede iniciar sesion");
+                   }
+        }else{
+             JOptionPane.showMessageDialog(null,"POR FAVOR LLENAR LOS CAMPOS");
         
         
         

@@ -15,6 +15,7 @@ public class frmgame extends javax.swing.JFrame {
      */
     public frmgame() {
         initComponents();
+         setLocationRelativeTo(null);
     }
 
     /**
