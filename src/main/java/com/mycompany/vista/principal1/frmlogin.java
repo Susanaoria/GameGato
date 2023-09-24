@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.vista.principal1;
+import GameG.GameMain;
 import com.mycompany.vista.Conexion;
 import static com.mycompany.vista.principal1.frmregistro.fr;
 import java.sql.Connection;
@@ -18,10 +19,10 @@ import javax.swing.JOptionPane;
  */
 public class frmlogin extends javax.swing.JFrame {
 public static frmregistro fr;
-public static frmgame fg;
-    Conexion con=new Conexion(); 
+public static GameMain GM;
+   
+ Conexion con=new Conexion(); 
 Connection cn=con.conectar();
-
 
     /**
      * Creates new form login
@@ -108,7 +109,7 @@ Connection cn=con.conectar();
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnregister)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,12 +141,11 @@ Connection cn=con.conectar();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -161,14 +161,14 @@ Connection cn=con.conectar();
         String pass=txtcontraseña.getText();
         //vamos a validar los campos
         if(!usuario.equals("")||!pass.equals("")){
-            //un comnetario de llenar los datos
+            //datos que tiene que ingresar y que la base de datos le de verificacion
             try{
                 PreparedStatement ps=cn.prepareCall("SELECT usuario FROM usuarios WHERE usuario='"+usuario+"'AND contraseña= '"+pass+"'");
             ResultSet rs=ps.executeQuery();
             if (rs.next()){
                 String Usuario=rs.getString("usuario");
-                 fg=new frmgame ();
-                 fg.setVisible(true);
+                 GM=new GameMain ();
+                 GM.setVisible(true);
                  this.dispose();
                 
                 
