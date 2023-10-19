@@ -34,7 +34,6 @@ public class GameMain extends javax.swing.JFrame {
     private String playerIA = "O"; //  Representación de la IA en el tablero
     private String playerHuman = "X"; //  Representación del jugador humano en el tablero
      
-    public static GameMainONLINE GMO;
     
     
     
@@ -305,8 +304,6 @@ private void resetGame() {
         labelEmpate = new javax.swing.JLabel();
         turnLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        btnLinea = new javax.swing.JMenuItem();
         vsIAmenu = new javax.swing.JMenu();
         Nivel1IA = new javax.swing.JMenuItem();
         Nivel2IA = new javax.swing.JMenuItem();
@@ -554,18 +551,6 @@ private void resetGame() {
                 .addGap(24, 24, 24))
         );
 
-        jMenu1.setText("Linea");
-
-        btnLinea.setText("vs linea");
-        btnLinea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLineaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(btnLinea);
-
-        jMenuBar1.add(jMenu1);
-
         vsIAmenu.setText("vs IA dificutad");
 
         Nivel1IA.setText("Nivel 1");
@@ -631,12 +616,6 @@ private JFrame frame;
 
        
     }//GEN-LAST:event_Nivel3IAActionPerformed
-
-    private void btnLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineaActionPerformed
-      GMO=new GameMainONLINE ();
-                 GMO.setVisible(true);
-                 this.dispose();
-    }//GEN-LAST:event_btnLineaActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         frame = new JFrame("salir");
@@ -740,14 +719,12 @@ private JFrame frame;
     private javax.swing.JTextField Stats1;
     private javax.swing.JTextField Stats2;
     private javax.swing.JTextField Stats3;
-    private javax.swing.JMenuItem btnLinea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
